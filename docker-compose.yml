@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+
+  unsealer:
+    image: alpine:3.9.2
+    container_name: unsealer
+    restart: always
+    command: sh -c "apk add curl jq  && chmod +x /root/unseal.sh && /root/unseal.sh"
+    env_file: .env
+    volumes:
+      - ./unseal.sh:/root/unseal.sh
